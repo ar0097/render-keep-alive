@@ -21,3 +21,16 @@ jobs:
           else
             echo "✅ API is awake and responding fine!"
           fi
+
+      - name: Ping Dashboard API
+        run: |
+          echo "Pinging Dashboard API at $(date -u)"
+          DASHBOARD_URL="https://dashboard-4zxv.onrender.com/"
+          DASHBOARD_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $DASHBOARD_URL)
+          echo "HTTP Status: $DASHBOARD_STATUS"
+
+          if [ "$DASHBOARD_STATUS" != "200" ] && [ "$DASHBOARD_STATUS" != "204" ]; then
+            echo "⚠️ Dashboard API responded with non-200 code ($DASHBOARD_STATUS)"
+          else
+            echo "✅ Dashboard API is awake and responding fine!"
+          fi

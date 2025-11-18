@@ -12,7 +12,7 @@ jobs:
       - name: Ping Render API
         run: |
           echo "Pinging API at $(date -u)"
-          URL="https://movie-booking-8v67.onrender.com/"
+          URL="https://movies-backend-hazel.vercel.app/"
           HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $URL)
           echo "HTTP Status: $HTTP_STATUS"
 
